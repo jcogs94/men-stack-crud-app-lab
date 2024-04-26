@@ -11,8 +11,16 @@ const Game = require('./models/game.js')
 
 app.use(express.urlencoded({ extended: false }));
 
+
 app.get('/', (req, res) => {
     res.render('index.ejs')
+})
+
+app.get('/games/:gameId', async (req, res) => {
+    const foundGame = await Game.findById(req.params.gameId)
+    res.render('./games/show.ejs', {
+        game: foundGame
+    })
 })
 
 app.get('/games', async (req, res) => {
@@ -41,7 +49,7 @@ app.post('/games', async (req, res) => {
     const newGame = req.body
     newGame.upvotes = 1
 
-    const newGameEntry = await Game.create(newGame)
+    await Game.create(newGame)
     res.redirect('/games')
 })
 
