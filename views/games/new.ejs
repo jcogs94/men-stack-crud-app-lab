@@ -10,7 +10,26 @@
     <%- include('../partials/nav.ejs') %>
     <h1>New Game</h1>
     <form action="/games" method="post">
-        <button type="submit">Add Game</button>
+        <fieldset aria-labelledby="gameFormLegend">
+            <legend id="gameFormLegend">New Game</legend>
+            <div>
+                <label for="gameType">Type of game:</label>
+                <select name="type" id="gameType">
+                    <option value="none"> - select type - </option>
+                    <option value="Video Game">Video Game</option>
+                    <option value="Board Game">Board Game</option>
+                    <option value="Sport">Sport</option>
+                </select>
+            </div>
+            <div>
+                <label for="gameName">Name of game:</label>
+                <input type="text" name="name" id="gameName">
+            </div>
+            <div>
+
+            </div>
+            <button type="submit">Add Game</button>
+        </fieldset>
     </form>
 </body>
 </html>

@@ -9,6 +9,8 @@ mongoose.connect(process.env.MONGODB_URI)
 
 const Game = require('./models/game.js')
 
+app.use(express.urlencoded({ extended: false }));
+
 app.get('/', (req, res) => {
     res.render('index.ejs')
 })
@@ -25,7 +27,10 @@ app.get('/games/new', async (req, res) => {
 })
 
 app.post('/games', async (req, res) => {
-    // res.send(req.body)
+    const newGame = req.body
+    newGame.upvotes = 1
+
+    const newGameEntry = await Game.create(newGame)
     res.redirect('/games')
 })
 
