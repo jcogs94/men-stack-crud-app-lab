@@ -17,8 +17,19 @@ app.get('/', (req, res) => {
 
 app.get('/games', async (req, res) => {
     const allGames = await Game.find()
+
+    let types = {}
+    allGames.forEach( (game) => {
+        if (types[game.type] === undefined) {
+            types[game.type] = []
+        }
+        
+        types[game.type].push(game)
+    })
+
     res.render('./games/index.ejs', {
-        games: allGames
+        typesOfGames: types,
+        typeKeys: Object.keys(types)
     })
 })
 

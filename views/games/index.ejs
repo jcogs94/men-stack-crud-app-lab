@@ -9,12 +9,15 @@
 <body>
     <%- include('../partials/nav.ejs') %>
     <h1>All Games</h1>
-    <ul>
-        <% games.forEach( (game) => { %>
-            <li>
-                <a href="/games/<%= game.name %>"><%= game.name %></a>
-            </li>
-        <% }) %>
-    </ul>
+    <% typeKeys.forEach( (type) => { %>
+        <h3><%= type %>s</h3>
+        <ul>
+            <% typesOfGames[type].forEach( (game) => { %>
+                <li>
+                    <a href="/games/<%= game.name %>"><%= game.name %></a>
+                </li>
+            <% }) %>
+        </ul>
+    <% }) %>
 </body>
 </html>
