@@ -7,6 +7,12 @@ dotenv.config()
 const mongoose = require('mongoose')
 mongoose.connect(process.env.MONGODB_URI)
 
+
+app.get('/', (req, res) => {
+    res.render('index.ejs')
+})
+
+
 mongoose.connection.on('connected', () => {
     console.log(`Connected to MongoDB ${mongoose.connection.name}`);
 })
