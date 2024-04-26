@@ -7,9 +7,17 @@ dotenv.config()
 const mongoose = require('mongoose')
 mongoose.connect(process.env.MONGODB_URI)
 
+const Game = require('./models/game.js')
 
 app.get('/', (req, res) => {
     res.render('index.ejs')
+})
+
+app.get('/games', async (req, res) => {
+    const allGames = await Game.find()
+    res.render('./games/index.ejs', {
+        games: allGames
+    })
 })
 
 

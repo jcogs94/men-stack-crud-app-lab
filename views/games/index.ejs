@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Favorite Games Database</title>
+    <title>All Games</title>
 </head>
 <body>
-    <h1>Favorite Games Database</h1>
-    <a href="/games">Show all games</a>
+    <h1>All Games</h1>
+    <ul>
+        <% games.forEach( (game) => { %>
+            <li><a href="/games/<%= game.name %>"></a></li>
+        <% }) %>
+    </ul>
+    <a href="/">Go Home</a>
 </body>
 </html>
