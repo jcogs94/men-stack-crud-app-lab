@@ -7,12 +7,14 @@
     <title>All Games</title>
 </head>
 <body>
+    <%- include('../partials/nav.ejs') %>
     <h1>All Games</h1>
     <ul>
         <% games.forEach( (game) => { %>
-            <li><a href="/games/<%= game.name %>"></a></li>
+            <li>
+                <a href="/games/<%= game.name %>"><%= game.name %></a>
+            </li>
         <% }) %>
     </ul>
-    <a href="/">Go Home</a>
 </body>
 </html>

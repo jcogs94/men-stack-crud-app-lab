@@ -20,6 +20,15 @@ app.get('/games', async (req, res) => {
     })
 })
 
+app.get('/games/new', async (req, res) => {
+    res.render('./games/new.ejs')
+})
+
+app.post('/games', async (req, res) => {
+    // res.send(req.body)
+    res.redirect('/games')
+})
+
 
 mongoose.connection.on('connected', () => {
     console.log(`Connected to MongoDB ${mongoose.connection.name}`);
