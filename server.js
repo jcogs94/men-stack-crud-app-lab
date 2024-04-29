@@ -31,11 +31,6 @@ app.get('/games/:gameId', async (req, res) => {
     })
 })
 
-app.delete('/games/:gameId', async (req, res) => {
-    await Game.findByIdAndDelete(req.params.gameId)
-    res.redirect('/games')
-})
-
 app.get('/games/:gameId/edit', async (req, res) => {
     const foundGame = await Game.findById(req.params.gameId)
     res. render('./games/edit.ejs', {
@@ -45,7 +40,7 @@ app.get('/games/:gameId/edit', async (req, res) => {
 
 app.get('/games', async (req, res) => {
     const allGames = await Game.find()
-
+    
     let types = {}
     allGames.forEach( (game) => {
         if (types[game.type] === undefined) {
@@ -54,7 +49,7 @@ app.get('/games', async (req, res) => {
         
         types[game.type].push(game)
     })
-
+    
     res.render('./games/index.ejs', {
         typesOfGames: types,
         typeKeys: Object.keys(types)
@@ -64,8 +59,21 @@ app.get('/games', async (req, res) => {
 app.post('/games', async (req, res) => {
     const newGame = req.body
     newGame.upvotes = 1
-
+    
     await Game.create(newGame)
+    res.redirect('/games')
+})
+
+app.put('/games/:gameId', async (req, res) => {
+    const updatedGame = req.body
+    updatedGame.upvotes = 1
+
+    await Game.findByIdAndUpdate(req.params.gameId, updatedGame)
+    res.redirect('/games')
+})
+
+app.delete('/games/:gameId', async (req, res) => {
+    await Game.findByIdAndDelete(req.params.gameId)
     res.redirect('/games')
 })
 

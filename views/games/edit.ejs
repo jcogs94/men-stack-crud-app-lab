@@ -8,7 +8,7 @@
 <body>
     <%- include('../partials/nav.ejs') %>
     <h1>Edit <%= game.name %></h1>
-    <form action="/games/:gameId" method="put">
+    <form action="/games/<%= game.id %>?_method=put" method="post">
         <fieldset aria-labelledby="gameFormLegend">
             <legend id="gameFormLegend"><%= game.name %></legend>
             <div>
