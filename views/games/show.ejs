@@ -12,5 +12,11 @@
     <h1><%= game.name %></h1>
     <p><b>Type of Game:</b> <%= game.type %></p>
     <p><b>Upvotes:</b> <%= game.upvotes %></p>
+    <form action="/games/<%= game.id %>/edit" method="get">
+        <button type="submit">Edit Game</button>
+    </form>
+    <form action="/games/<%= game.id %>?_method=delete" method="post">
+        <button type="submit">Delete Game</button>
+    </form>
 </body>
 </html>
