@@ -8,5 +8,36 @@
 <body>
     <%- include('../partials/nav.ejs') %>
     <h1>Edit <%= game.name %></h1>
+    <form action="/games/:gameId" method="put">
+        <fieldset aria-labelledby="gameFormLegend">
+            <legend id="gameFormLegend"><%= game.name %></legend>
+            <div>
+                <label for="gameType">Type of game:</label>
+                <select name="type" id="gameType">
+                    <option value="none" <% if (game.type === 'none') { %>
+                        selected='selected'
+                    <% } %>
+                    > - select type - </option>
+                    <option value="Video Game" <% if (game.type === 'Video Game') { %>
+                        selected='selected'
+                    <% } %>
+                    >Video Game</option>
+                    <option value="Board Game" <% if (game.type === 'Board Game') { %>
+                        selected='selected'
+                    <% } %>
+                    >Board Game</option>
+                    <option value="Sport" <% if (game.type === 'Sport') { %>
+                        selected='selected'
+                    <% } %>
+                    >Sport</option>
+                </select>
+            </div>
+            <div>
+                <label for="gameName">Name of game:</label>
+                <input type="text" name="name" id="gameName" value="<%= game.name %>">
+            </div>
+            <button type="submit">Update <%= game.name %></button>
+        </fieldset>
+    </form>
 </body>
 </html>
