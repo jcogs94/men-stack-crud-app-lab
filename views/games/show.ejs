@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <script defer src="js/app.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
     <title><%= game.name %></title>
 </head>
 <body>
     <%- include('../partials/nav.ejs') %>
     <h1><%= game.name %></h1>
-    <p><b>Type of Game:</b> <%= game.type %></p>
-    <p><b>Upvotes:</b> <%= game.upvotes %></p>
-    <form action="/games/<%= game.id %>/edit" method="get">
-        <button type="submit">Edit Game</button>
-    </form>
-    <form action="/games/<%= game.id %>?_method=delete" method="post">
-        <button type="submit">Delete Game</button>
-    </form>
+    <main id="show-main">
+        <p><b>Type of Game:</b> <%= game.type %></p>
+        <p><b>Upvotes:</b> <%= game.upvotes %></p>
+        <div id="options-box">
+            <form action="/games/<%= game.id %>/edit" method="get">
+                <button type="submit">Edit Game</button>
+            </form>
+            <form action="/games/<%= game.id %>?_method=delete" method="post">
+                <button type="submit">Delete Game</button>
+            </form>
+        </div>
+    </main>
 </body>
 </html>

@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
     <title>Edit <%= game.name %></title>
 </head>
 <body>
     <%- include('../partials/nav.ejs') %>
-    <h1>Edit <%= game.name %></h1>
+    <h1>Edit Game</h1>
     <form action="/games/<%= game.id %>?_method=put" method="post">
         <fieldset aria-labelledby="gameFormLegend">
             <legend id="gameFormLegend"><%= game.name %></legend>
@@ -36,7 +37,7 @@
                 <label for="gameName">Name of game:</label>
                 <input type="text" name="name" id="gameName" value="<%= game.name %>">
             </div>
-            <button type="submit">Update <%= game.name %></button>
+            <button type="submit">Update Game</button>
         </fieldset>
     </form>
 </body>
